@@ -1,0 +1,52 @@
+.order-head-area{
+  background: linear-gradient(71deg, #FF7088 0%, #F759A8 100%);
+  color: #fff;
+  text-align: center;
+  position:relative;
+  padding:1.2rem 0;
+  z-index:21;
+  &.ios-order-head-area{
+    padding:3rem 0 1.2rem 0;
+  }
+  .title{
+    font-size:1.8rem;
+    line-height:2rem;
+    font-weight:normal;
+  }
+  .head-icon{
+    width: 2rem;
+    height: 2rem;
+    position:absolute;
+    background-size:2rem 2rem;
+    background-repeat: no-repeat;
+    bottom:1.2rem;
+    display: block;
+  }
+  .back-icon{
+    left:1.3rem;
+    background-image:url('./img/icon_back_DP@2x.png');
+  }
+  .search-icon{
+    right:1.3rem;
+    background-image: url('./img/icon_search@2x.png');
+  }
+
+}
+.mask-div{
+  opacity:.5;
+}
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (   min--moz-device-pixel-ratio: 2),
+only screen and (     -o-min-device-pixel-ratio: 2/1),
+only screen and (        min-device-pixel-ratio: 2){
+  .order-head-area{
+    .back-icon{
+      background-image:url('./img/icon_back_DP@3x.png');
+    }
+    .search-icon{
+      background-image: url('./img/icon_search@3x.png');
+    }
+  }
+}
