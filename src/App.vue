@@ -4,7 +4,7 @@
             <transition name="fade" mode="out-in">
                 <router-view></router-view>
             </transition>
-            <app-bottom-tab v-show="showBottom"></app-bottom-tab>
+            <app-bottom-tab></app-bottom-tab>
         </div>
     </div>
 </template>
@@ -13,7 +13,6 @@
 import fetchJsonp from 'fetch-jsonp';
 import Toast from '@dp/wepp-module-toast';
 import AppBottomTab from './commonApp/AppBottomTab.vue';
-import { mapGetters } from 'vuex';
 export default {
     name: 'app',
     data () {
@@ -24,9 +23,6 @@ export default {
         AppBottomTab
     },
     computed:{
-        ...mapGetters({
-            showBottom:'getShowBottomStatus'
-        })
     },
     created:function(){
 
