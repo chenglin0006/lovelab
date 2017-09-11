@@ -239,7 +239,6 @@
         props:[],
         beforeRouteEnter (to, from, next) {
           next(vm => {
-            debugger
             console.log(to,'1111===');
           })
         },
