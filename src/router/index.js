@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import VueResource from 'vue-resource';
 
 import AppHotelDetailIndex from '../hotelIndex/AppHotelDetailIndex.vue';
 import AppHotelDetailDiscountIndex from '../hotelIndex/AppHotelDetailDiscountIndex.vue'
@@ -14,12 +13,16 @@ import AppHotelDetailHallIndex from '../hotelIndex/AppHotelDetailHallIndex.vue'
 import AppHotelDetailPicIndex from '../hotelIndex/AppHotelDetailPicIndex.vue'
 
 // 组件
-const Invite = resolve => require(['../inviteIndex/AppInviteDetailIndex.vue'], resolve);
-const Hotel = resolve => require(['../hotelIndex/AppHotelListIndex.vue'], resolve);
-const Own = resolve => require(['../orderIndex/AppMyIndex.vue'], resolve);
+// const Invite = resolve => require(['../inviteIndex/AppInviteDetailIndex.vue'], resolve);
+// const Hotel = resolve => require(['../hotelIndex/AppHotelListIndex.vue'], resolve);
+// const Own = resolve => require(['../orderIndex/AppMyIndex.vue'], resolve);
+
+
+const Invite = () => import('../inviteIndex/AppInviteDetailIndex.vue')
+const Hotel = () => import('../hotelIndex/AppHotelListIndex.vue')
+const Own = () => import('../orderIndex/AppMyIndex.vue')
 
 Vue.use(Router);
-Vue.use(VueResource);
 
 export default new Router({
   routes: [

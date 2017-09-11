@@ -1,12 +1,14 @@
 <template>
     <section class="hotel-detail-section">
         <div class="pic-div" @click="toPicIndex">
+            <!--
             <swiper :options="swiperOption" ref="mySwiper">
                 <swiper-slide :key="index" v-for="(item,index) in imgList">
                     <img :src="item">
                 </swiper-slide>
-                 <!-- <div v-show="imgList.length>0" class="swiper-pagination" slot="pagination"></div> -->
-            </swiper>
+                 <div v-show="imgList.length>0" class="swiper-pagination" slot="pagination"></div>
+                </swiper>
+            -->
             <div class="mask-index-div">
             </div>
             <div class="pic-number-div" v-if="hotelBasicBriefInfoData.picCount">共{{hotelBasicBriefInfoData.picCount}}张</div>
@@ -146,7 +148,7 @@ import AppCheckHallItem from './components/AppCheckHallItem.vue'
 import AppBanquetMenuItem from './components/AppBanquetMenuItem.vue'
 import AppCalendar from './components/AppCalendarPop.vue'
 import AppValidSchedulePop from './components/AppValidSchedulePop.vue';
-import { swiper, swiperSlide } from 'vue-awesome-swiper';
+// import { swiper, swiperSlide } from 'vue-awesome-swiper';
 import Toast from '@dp/wepp-module-toast';
 import Util from '@dp/vc-util';
 import $ from '@dp/zepto';
@@ -195,8 +197,8 @@ export default {
        AppCheckHallItem,
        AppBanquetMenuItem,
        AppCalendar,
-       swiper,
-       swiperSlide,
+       // swiper,
+       // swiperSlide,
        AppValidSchedulePop
     },
     watch:{

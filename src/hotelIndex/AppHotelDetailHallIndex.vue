@@ -1,13 +1,14 @@
 <template>
     <section class="hall-detail-section">
         <div class="pic-div">
+        <!-- 
             <swiper :options="swiperOption" ref="mySwiper">
                 <swiper-slide :key="index" v-for="(item,index) in imgList">
                     <img :src="item" @click="showImgPreivewFun(index)">
                 </swiper-slide>
                 <div v-show="imgList.length>0" class="swiper-pagination" slot="pagination"></div>
             </swiper>
-            <!-- <div class="mask-index-div"></div> -->
+            <div class="mask-index-div"></div> -->
         </div>
         <div class="hall-info-div" v-if="hallDetailData&&hallDetailData.briefInfo">
             <div class="hall-name-div">
@@ -90,7 +91,7 @@
 </template>
 
 <script>
-import { swiper, swiperSlide } from 'vue-awesome-swiper';
+// import { swiper, swiperSlide } from 'vue-awesome-swiper';
 import Toast from '@dp/wepp-module-toast';
 import Util from '@dp/vc-util';
 import $ from '@dp/zepto';
@@ -129,8 +130,8 @@ export default {
     },
     props:[],
     components: {
-        swiper,
-        swiperSlide
+        // swiper,
+        // swiperSlide
     },
     watch:{
         
