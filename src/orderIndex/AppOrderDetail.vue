@@ -197,7 +197,6 @@
   import Toast from '@dp/wepp-module-toast';
   import AppOrderBasicInfo from './components/AppOrderBasicInfo.vue';
   import AppOrderUploadPic from './components/AppOrderUploadPic.vue';
-  import KNB from '@dp/knb';
   import {getParameter} from './js/tool.js';
   import CommonFun from '../commonJs/CommonFun.js';
   var isAPP = CommonFun.getUaIsApp();
@@ -256,13 +255,7 @@
       },
 
       toSubOrderDetailIndexFun:function (item) {
-        if(isAPP){
-          KNB.openWebview({
-            url: CONSTANT.gAddress+'/app/gfe-app-page-yzs-love-lab/order-suborder-detail.html?subOrderId='+item.subOrderId, //需要打开的完整http链接,
-          });
-        }else{
-          location.href = './order-suborder-detail.html?subOrderId='+item.subOrderId;
-        }
+        location.href = './order-suborder-detail.html?subOrderId='+item.subOrderId;
 
       },
       showQrCodeFun:function (item) {

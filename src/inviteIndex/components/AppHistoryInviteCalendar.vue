@@ -72,7 +72,6 @@
     import formatter from 'date-formatter';
     import calendarObj from '../js/inviteCalendar.js';
     import $ from '@dp/zepto';
-    import KNB from '@dp/knb';
     import Request from 'superagent';
     import Jsonp from 'superagent-jsonp';
     import Util from '@dp/vc-util';
@@ -163,16 +162,6 @@
 
         mounted:function(){
             this.isLLApp = CommonFun.getUaIsApp();
-            KNB.ready(()=>{
-                KNB.getUA({
-                    success: (info)=>{
-                        this.isIOS = info&&info.osName=='ios'?true:false;
-                        this.isAndroid = info&&info.osName=='android'?true:false;
-
-                    },
-                    fail: function(err){}
-                });
-            });
             this.checkInDate = this.initcheckintext?new Date(this.initcheckintext):new Date(formatter(new Date(),'YYYY-MM-DD'));
             this.dayItemWidth = $('body').width()*0.14285;
             if(this.invitetime){

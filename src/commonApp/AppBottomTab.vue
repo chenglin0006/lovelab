@@ -25,7 +25,6 @@
     import Util from '@dp/vc-util';
     import Toast from '@dp/wepp-module-toast';
     import fetchJsonp from 'fetch-jsonp';
-    import KNB from '@dp/knb';
     import UA from '@dp/util-m-ua';
     var mDomain = CommonFun.getDomain();
     var gDomain = CommonFun.getGDomain();

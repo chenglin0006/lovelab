@@ -75,7 +75,6 @@
     import Toast from '@dp/wepp-module-toast';
     import fetchJsonp from 'fetch-jsonp';
     import DPApp from '@dp/dpapp';
-    import KNB from '@dp/knb';
     import UA from '@dp/util-m-ua';
 
     var UAStr = (navigator.userAgent).toLowerCase(),

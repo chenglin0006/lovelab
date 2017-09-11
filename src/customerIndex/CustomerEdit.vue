@@ -233,20 +233,6 @@
             this.$store.commit('getHotelInfo')
             this.$store.commit('getAllPersonByRole', '售前')
             this.$store.commit('getGeneralEnum')
-            KNB.ready(()=>{
-                KNB.getUA({
-                    success: (info)=>{
-                        this.isIOS = info && info.osName == 'ios' ? true : false
-                        this.isAndroid = info && info.osName == 'android' ? true : false
-                    },
-                    fail: function(err){}
-                });
-                KNB.setNavigationBarHidden({
-                    flag: 1, //0表示显示，1表示隐藏
-                    success: function(){},
-                    fail: function(){}
-                });
-            });
         },
         components:{
             AppCalendar,

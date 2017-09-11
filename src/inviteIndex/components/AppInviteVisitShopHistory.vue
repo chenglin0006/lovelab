@@ -28,7 +28,6 @@
     import qs from 'qs';
     import $ from '@dp/zepto';
     import fetchJsonp from 'fetch-jsonp';
-    import KNB from '@dp/knb';
     import CommonFun from '../../commonJs/CommonFun.js'
     var mDomain = CommonFun.getDomain();
     var eDomain = CommonFun.getEDomain();
@@ -50,16 +49,6 @@
         },
         mounted() {
             this.isLLApp = CommonFun.getUaIsApp();
-            KNB.ready(()=>{
-                KNB.getUA({
-                    success: (info)=>{
-                        this.isIOS = info&&info.osName=='ios'?true:false;
-                        this.isAndroid = info&&info.osName=='android'?true:false;
-
-                    },
-                    fail: function(err){}
-                });
-            });
         },
         computed:{
             ...mapGetters({

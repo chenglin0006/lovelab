@@ -110,7 +110,6 @@
   import fetchJsonp from 'fetch-jsonp';
   import Toast from '@dp/wepp-module-toast';
   import Qrcode from 'v-qrcode';
-  import KNB from '@dp/knb';
   import {getParameter} from './js/tool.js';
   import CommonFun from '../commonJs/CommonFun.js';
   var UAStr = (navigator.userAgent).toLowerCase(),

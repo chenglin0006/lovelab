@@ -38,7 +38,6 @@
     import $ from '@dp/zepto';
     import Util from '@dp/vc-util';
     import CommonFun from '../commonJs/CommonFun.js';
-    import KNB from '@dp/knb';
     var mDomain = CommonFun.getDomain();
     var eDomain = CommonFun.getEDomain();
     var gDomain =CommonFun.getGDomain();
@@ -96,38 +95,17 @@
             this.hyOrderId = Util.getUrlParam('hyOrderId')?parseInt(Util.getUrlParam('hyOrderId')):0;
             this.yzsUserId = Util.getUrlParam('yzsUserId')?parseInt(Util.getUrlParam('yzsUserId')):0;
             this.businessLineType = Util.getUrlParam('businessLineType')?parseInt(Util.getUrlParam('businessLineType')):0;
-            KNB.ready(()=>{
-                KNB.getUA({
-                    success: (info)=>{
-                        this.isIOS = info&&info.osName=='ios'?true:false;
-                        this.isAndroid = info&&info.osName=='android'?true:false;
-                        if(this.hyOrderId&&!this.hqOrderId){
-                            this.getOrderDetailHY();
-                        }
-                        if(this.hqOrderId&&!this.hyOrderId){
-                           this.getOrderDetailHQ();
-                        }
+            if(this.hyOrderId&&!this.hqOrderId){
+                this.getOrderDetailHY();
+            }
+            if(this.hqOrderId&&!this.hyOrderId){
+               this.getOrderDetailHQ();
+            }
 
-                        if(this.hqOrderId&&this.hyOrderId){
-                            this.getOrderDetailHY();
-                            this.getOrderDetailHQ();
-                        }
-                    },
-                    fail: (err)=>{
-                        if(this.hyOrderId&&!this.hqOrderId){
-                            this.getOrderDetailHY();
-                        }
-                        if(this.hqOrderId&&!this.hyOrderId){
-                           this.getOrderDetailHQ();
-                        }
-
-                        if(this.hqOrderId&&this.hyOrderId){
-                            this.getOrderDetailHY();
-                            this.getOrderDetailHQ();
-                        }
-                    }
-                });
-            });
+            if(this.hqOrderId&&this.hyOrderId){
+                this.getOrderDetailHY();
+                this.getOrderDetailHQ();
+            }
         },
         methods:{
             toCustomerDetail:function(){

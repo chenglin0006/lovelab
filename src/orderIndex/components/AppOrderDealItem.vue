@@ -110,7 +110,6 @@
     }
 </style>
 <script>
-  import KNB from '@dp/knb';
   import CONSTANT from '../js/constant.js';
   import CommonFun from '../../commonJs/CommonFun.js';
   var isAPP = CommonFun.getUaIsApp();
@@ -119,14 +118,7 @@
 
     methods:{
       toDetailIndex: function (event) {
-        if(isAPP){
-          KNB.openWebview({
-            url: CONSTANT.gAddress+'/app/gfe-app-page-yzs-love-lab/order-detail.html?orderId='+this.item.id, //需要打开的完整http链接,
-            //隐藏webview的导航栏功能
-          });
-        }else{
-          location.href = './order-detail.html?orderId='+this.item.id;
-        }
+        location.href = './order-detail.html?orderId='+this.item.id;
 
       }
     },

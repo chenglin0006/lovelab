@@ -14,7 +14,6 @@
     "vue"
   ],
   "dependencies": {
-    "@dp/knb": "^1.4.0",
     "@dp/base-op-url": "^1.1.5",
     "@dp/util-m-ua": "^2.0.0",
     "@dp/vc-util": "^1.1.5",

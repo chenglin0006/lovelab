@@ -135,7 +135,6 @@
     import fetchJsonp from 'fetch-jsonp';
     import Util from '@dp/vc-util';
     import qs from 'qs';
-    import KNB from '@dp/knb';
     import $ from '@dp/zepto';
     require('@gfe/m-isomorphic-fetch');
     import CommonFun from '../commonJs/CommonFun.js'
@@ -198,24 +197,10 @@
             this.type = Util.getUrlParam('type')?parseInt(Util.getUrlParam('type')):0;
             this.businessLineType = Util.getUrlParam('businessLineType')?parseInt(Util.getUrlParam('businessLineType')):0;
             this.yzsUserId = Util.getUrlParam('yzsUserId')?Util.getUrlParam('yzsUserId'):0;
-            KNB.ready(()=>{
-                KNB.getUA({
-                    success: (info)=>{
-                        this.isIOS = info&&info.osName=='ios'?true:false;
-                        this.isAndroid = info&&info.osName=='android'?true:false;
-                        this.getHotelList();
-                        if(this.type!=2){
-                          this.getSignWedList();
-                        }
-                    },
-                    fail: (err)=>{
-                        this.getHotelList();
-                        if(this.type!=2){
-                          this.getSignWedList();
-                        }
-                    }
-                });
-            });
+            this.getHotelList();
+            if(this.type!=2){
+              this.getSignWedList();
+            }
         },
         computed:{
             ...mapGetters({

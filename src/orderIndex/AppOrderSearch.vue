@@ -119,7 +119,6 @@
   import qs from 'qs';
   import Toast from '@dp/wepp-module-toast';
   import $ from '@dp/zepto';
-  import KNB from '@dp/knb';
   import CommonFun from '../commonJs/CommonFun.js';
 
   var $WIN = $(window);
@@ -146,10 +145,6 @@
       AppOrderDealItem
     },
     created(){
-      //隐藏导航栏
-      KNB.setNavigationBarHidden({
-        flag: 1, //0表示显示，1表示隐藏
-      });
     },
     mounted(){
 //      let resultSearchDivDom = document.getElementsByClassName('result-search-div')[0];
@@ -236,11 +231,7 @@
         })
       },
       toBack:function () {
-        if(isAPP){
-          KNB.closeWebview({});
-        }else{
-          location.href = './order-list.html';
-        }
+        location.href = './order-list.html';
       }
     }
   }

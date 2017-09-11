@@ -32,7 +32,6 @@
 </template>
 
 <script>
-import KNB from '@dp/knb';
 import UA from '@dp/util-m-ua';
 import CommonFun from '../../commonJs/CommonFun.js';
 var gDomain = CommonFun.getGDomain();

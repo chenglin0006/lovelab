@@ -77,7 +77,6 @@ import qs from 'qs';
 import mockData from './js/mock.js';
 import fetchJsonp from 'fetch-jsonp';
 import CommonFun from '../commonJs/CommonFun.js';
-import KNB from '@dp/knb';
 var mDomain = CommonFun.getDomain();
 var eDomain = CommonFun.getEDomain();
 export default {
@@ -102,18 +101,7 @@ export default {
     mounted(){
         this.menuId = this.$route.query.menuId;
         this.isLLApp = CommonFun.getUaIsApp();
-        KNB.ready(()=>{
-            KNB.getUA({
-                success: (info)=>{
-                    this.isIOS = info&&info.osName=='ios'?true:false;
-                    this.isAndroid = info&&info.osName=='android'?true:false;
-                    this.getMenuDetailData();
-                },
-                fail: (err)=>{
-                    this.getMenuDetailData();
-                }
-            });
-        });
+        this.getMenuDetailData();
     },
     methods:{
         showFeeRulePopFun:function(){

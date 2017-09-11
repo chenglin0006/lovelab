@@ -29,7 +29,6 @@ import UserTips from './components/UserTips.vue'
 import UserTabs from './components/UserTabs.vue'
 import UserInfo from './components/UserInfo.vue'
 import AppBottomTab from '../commonApp/AppBottomTab.vue'
-import KNB from '@dp/knb'
 import CommonFun from '../commonJs/CommonFun.js'
 var mDomain = CommonFun.getDomain();
 
@@ -61,20 +60,6 @@ export default {
         })
     },
     mounted(){
-        KNB.ready(()=>{
-            KNB.getUA({
-                success: (info)=>{
-                    this.isIOS = info && info.osName == 'ios' ? true : false
-                    this.isAndroid = info && info.osName == 'android' ? true : false
-                },
-                fail: function(err){}
-            });
-            KNB.setNavigationBarHidden({
-              flag: 1, //0表示显示，1表示隐藏
-              success: function(){},
-              fail: function(){}
-            });
-        });
     },
     watch:{
         '$store.state.user': {

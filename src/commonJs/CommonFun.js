@@ -1,5 +1,4 @@
 import fetchjsonp from 'fetch-jsonp'
-import KNB from '@dp/knb'
 
 var androidLoginStatus =false; //判断安卓环境下是否打开了登录的弹窗
 
@@ -7,13 +6,6 @@ function androidLogin(){
   let currentUrl = location.href;
   if(!androidLoginStatus){
       androidLoginStatus=true;
-      KNB.login({
-        success: function(){
-          location.href = currentUrl;
-          androidLoginStatus=false;
-        }
-      });
-      
   }
 }
 

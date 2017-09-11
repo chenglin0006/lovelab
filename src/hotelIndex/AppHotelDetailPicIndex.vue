@@ -37,7 +37,6 @@ import mockData from './js/mock.js';
 import fetchJsonp from 'fetch-jsonp';
 import CommonFun from '../commonJs/CommonFun.js';
 import formatter from 'date-formatter';
-import KNB from '@dp/knb';
 var mDomain = CommonFun.getDomain();
 var eDomain = CommonFun.getEDomain();
 export default {
@@ -70,50 +69,17 @@ export default {
     mounted(){
         this.shopId = Util.getUrlParam('shopId')?Util.getUrlParam('shopId'):0;
         this.isLLApp = CommonFun.getUaIsApp();
-        KNB.ready(()=>{
-            KNB.getUA({
-                success: (info)=>{
-                    this.isIOS = info&&info.osName=='ios'?true:false;
-                    this.isAndroid = info&&info.osName=='android'?true:false;
-                    this.getPicData();
-                },
-                fail: (err)=>{
-                    this.getPicData();
-                }
-            });
-        });
+        this.getPicData();
     },
     methods:{
         showImgPreivewFun:function(index){
             if(this.imgList.length){
-                if(this.isLLApp){
-                    KNB.setNavigationBarHidden({
-                      flag: 1, //0表示显示，1表示隐藏
-                      success: ()=>{
-                        this.showImgPreivewStatus = true;
-                        this.$refs.mySwiper.swiper.slideTo(index);
-                      },
-                      fail: ()=>{}
-                    });
-                } else {
-                    this.showImgPreivewStatus = true;
-                    this.$refs.mySwiper.swiper.slideTo(index);
-                }
+                this.showImgPreivewStatus = true;
+                this.$refs.mySwiper.swiper.slideTo(index);
             }
         },
         hideImgPreivewFun:function(){
-            if(this.isLLApp){
-                KNB.setNavigationBarHidden({
-                  flag: 0, //0表示显示，1表示隐藏
-                  success: ()=>{
-                    this.showImgPreivewStatus = false;
-                  },
-                  fail: ()=>{
-                  }
-                });
-            } else {
-                this.showImgPreivewStatus = false;
-            }
+            this.showImgPreivewStatus = false;
         },
         chooseTabFun:function(item){
             this.dataList.forEach((ele,index)=>{

@@ -191,7 +191,6 @@
     import qs from 'qs';
     import Toast from '@dp/wepp-module-toast';
     import formatter from 'date-formatter';
-    import KNB from '@dp/knb';
     import CommonFun from '../commonJs/CommonFun.js';
 
     var $WIN = $(window);
@@ -266,10 +265,6 @@
 
       },
       created(){
-        //隐藏导航栏
-        KNB.setNavigationBarHidden({
-          flag: 1, //0表示显示，1表示隐藏
-        });
       },
       mounted(){
         this.fetchStatus();
@@ -547,22 +542,11 @@
         },
         //跳转到search页面
         toSearch:function () {
-          if(isAPP){
-            KNB.openWebview({
-              url: CONSTANT.gAddress+'/app/gfe-app-page-yzs-love-lab/order-search.html', //需要打开的完整http链接,
-              //隐藏webview的导航栏功能
-            });
-          }else{
-            location.href = './order-search.html';
-          }
+          location.href = './order-search.html';
 
         },
         toBack:function () {
-          if(isAPP){
-            KNB.closeWebview({});
-          }else{
-            location.href = './my-index.html';
-          }
+          location.href = './my-index.html';
         }
 
       },

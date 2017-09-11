@@ -15,7 +15,6 @@ import qs from 'qs';
 import mockData from './js/mock.js';
 import fetchJsonp from 'fetch-jsonp';
 import CommonFun from '../commonJs/CommonFun.js';
-import KNB from '@dp/knb';
 var mDomain = CommonFun.getDomain();
 var eDomain = CommonFun.getEDomain();
 export default {
@@ -38,18 +37,7 @@ export default {
     mounted(){
         this.shopId = Util.getUrlParam('shopId')?Util.getUrlParam('shopId'):0;
         this.isLLApp = CommonFun.getUaIsApp();
-        KNB.ready(()=>{
-            KNB.getUA({
-                success: (info)=>{
-                    this.isIOS = info&&info.osName=='ios'?true:false;
-                    this.isAndroid = info&&info.osName=='android'?true:false;
-                    this.getBasicBriefInfo();
-                },
-                fail: (err)=>{
-                    this.getBasicBriefInfo();
-                }
-            });
-        });
+        this.getBasicBriefInfo();
     },
     methods:{
         //获取酒店基本信息

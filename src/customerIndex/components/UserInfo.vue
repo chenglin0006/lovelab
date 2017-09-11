@@ -55,7 +55,6 @@
 
 <script>
 import formatter from 'date-formatter';
-import KNB from '@dp/knb'
 import CommonFun from '../../commonJs/CommonFun.js'
 let isLLApp = CommonFun.getUaIsApp()
 let base_url = document.domain.indexOf("dianping.com") > -1 ? 'https://g.dianping.com/app/gfe-app-page-yzs-love-lab' : 'https://g.51ping.com/app/gfe-app-page-yzs-love-lab'
@@ -66,13 +65,7 @@ export default {
             return formatter(new Date(time), 'YYYY-MM-DD hh:mm:ss')
         },
         showDetail(){
-            if (isLLApp) {
-                KNB.openWebview({
-                    url: `${base_url}/customer-detail.html?yzsUserId=${this.config.yzsUserId}`
-                })
-            } else {
-                location.href = `./customer-detail.html?yzsUserId=${this.config.yzsUserId}`
-            }
+            location.href = `./customer-detail.html?yzsUserId=${this.config.yzsUserId}`
         }
     }
 }

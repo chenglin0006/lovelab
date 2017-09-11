@@ -27,7 +27,6 @@ import MyHeader from './components/Header.vue'
 import UserTabs from './components/UserTabs.vue'
 import UserInfo from './components/UserInfo.vue'
 import CommonFun from '../commonJs/CommonFun.js'
-import KNB from '@dp/knb'
 var mDomain = CommonFun.getDomain();
 
 export default {
@@ -48,20 +47,6 @@ export default {
         });
     },
     mounted(){
-        KNB.ready(()=>{
-            KNB.getUA({
-                success: (info)=>{
-                    this.isIOS = info && info.osName == 'ios' ? true : false
-                    this.isAndroid = info && info.osName == 'android' ? true : false
-                },
-                fail: function(err){}
-            });
-            KNB.setNavigationBarHidden({
-              flag: 1, //0表示显示，1表示隐藏
-              success: function(){},
-              fail: function(){}
-            });
-        });
     },
     methods: {
         dosearched() {

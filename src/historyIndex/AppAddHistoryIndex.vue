@@ -96,8 +96,7 @@
     import formatter from 'date-formatter';
     import AppSelectMul from './components/AppSelectMul.vue';
     import Util from '@dp/vc-util';
-    import qs from 'qs';
-    import KNB from '@dp/knb';
+    import qs from 'qs';]
     import $ from '@dp/zepto';
     import { mapGetters } from 'vuex';
     require('@gfe/m-isomorphic-fetch');
@@ -168,28 +167,12 @@
                 }
             });
             this.$store.dispatch('setChoosedReportHotel',[]);
-            KNB.ready(()=>{
-                KNB.getUA({
-                    success: (info)=>{
-                        this.isIOS = info&&info.osName=='ios'?true:false;
-                        this.isAndroid = info&&info.osName=='android'?true:false;
-                        this.getCustomerGrade();
-                        this.getSelectInviteList();
-                        this.initInviteCalendarFun();
-                        this.getInviteDateFun();
-                        this.getUnReportedShopList();
-                        this.getSelectStopReasonList();
-                    },
-                    fail: (err)=>{
-                        this.getCustomerGrade();
-                        this.getSelectInviteList();
-                        this.initInviteCalendarFun();
-                        this.getInviteDateFun();
-                        this.getUnReportedShopList();
-                        this.getSelectStopReasonList();
-                    }
-                });
-            });
+            this.getCustomerGrade();
+            this.getSelectInviteList();
+            this.initInviteCalendarFun();
+            this.getInviteDateFun();
+            this.getUnReportedShopList();
+            this.getSelectStopReasonList();
         },
         watch:{
             'customerInfoObj.grade':function(val){

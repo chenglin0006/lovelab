@@ -36,7 +36,6 @@ import mockData from './js/mock.js';
 import fetchJsonp from 'fetch-jsonp';
 import CommonFun from '../commonJs/CommonFun.js';
 import formatter from 'date-formatter';
-import KNB from '@dp/knb';
 var mDomain = CommonFun.getDomain();
 var eDomain = CommonFun.getEDomain();
 export default {
@@ -59,18 +58,7 @@ export default {
     mounted(){
         this.shopId = this.$route.query.shopId;
         this.isLLApp = CommonFun.getUaIsApp();
-        KNB.ready(()=>{
-            KNB.getUA({
-                success: (info)=>{
-                    this.isIOS = info&&info.osName=='ios'?true:false;
-                    this.isAndroid = info&&info.osName=='android'?true:false;
-                    this.getDiscountData();
-                },
-                fail: (err)=>{
-                    this.getDiscountData();
-                }
-            });
-        });
+        this.getDiscountData();
     },
     methods:{
         getDiscountData:function(){

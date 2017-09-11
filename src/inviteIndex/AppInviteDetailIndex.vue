@@ -155,7 +155,6 @@
     import commonData from './js/commonData.js';
     import calendarObj from './js/inviteCalendar.js';
     import $ from '@dp/zepto';
-    import KNB from '@dp/knb';
     import qs from 'qs';
     import Util from '@dp/vc-util';
     import Toast from '@dp/wepp-module-toast';

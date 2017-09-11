@@ -14,7 +14,6 @@
 
 <script>
 import ContractItem from './ContractItem.vue'
-import KNB from '@dp/knb'
 import CommonFun from '../../commonJs/CommonFun.js'
 let isInApp = CommonFun.getUaIsApp()
 let host_name = location.hostname.indexOf('dianping') > -1 ? 'g.dianping.com' : 'g.51ping.com'
@@ -26,13 +25,7 @@ export default {
     methods: {
         showSignInfo() {
             let url = `https://${host_name}/app/gfe-app-page-yzs-love-lab/customer-sign-info.html?yzsUserId=${this.config}`
-            if (isInApp) {
-                KNB.openWebview({
-                    url: url
-                })
-            } else {
-                location.href = `./customer-sign-info.html?yzsUserId=${this.config}`
-            }       
+            location.href = `./customer-sign-info.html?yzsUserId=${this.config}`
         }
     }
 }

@@ -8,29 +8,6 @@ import CustomerSignInfo from './CustomerSignInfo.vue'
 import CustomerSearch from './CustomerSearch.vue'
 import CustomerEdit from './CustomerEdit.vue'
 import CommonFun from '../commonJs/CommonFun.js'
-import KNB from '@dp/knb'
-KNB.ready(()=>{
-    KNB.setBouncesEnabled({
-        enabled: 0, //1表示允许反弹，0表示禁止。default: 1
-        success: function(){},
-        fail: function(){}
-    });
-    KNB.setStatusBarStyle({
-        style: 1, //1:状态栏字体为白色, 0:状态栏字体为黑色
-        success: function(){},
-        fail: function(){}
-    });
-    KNB.setLLButton({
-        icon: 'H5_Back', 
-        handle: function(){
-            KNB.closeWebview({})
-        },
-        success: function(){
-        },
-        fail: function(){
-        }
-    });
-})
 let mDomain = CommonFun.getDomain();
 import '../main.less';
 Vue.use(Vuex)

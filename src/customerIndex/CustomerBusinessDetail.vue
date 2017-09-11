@@ -191,14 +191,8 @@ export default {
             return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes()
         },
         showEidtCustomer() {
-            // let url = `https://${host_name}/app/gfe-app-page-yzs-love-lab/customer-edit.html?yzsUserId=${this.customerId}`
-            // if (isInApp) {
-            //     KNB.openWebview({
-            //         url: url
-            //     })
-            // } else {
-                location.href = `./customer-edit.html?yzsUserId=${this.customerId}`
-            // }
+            
+            location.href = `./customer-edit.html?yzsUserId=${this.customerId}`
         },
         showAddCustomerHistory() {
             this.isShowHistroy = true
@@ -209,24 +203,12 @@ export default {
         jumpQianyue(event, type) {
             event.stopPropagation()
             let url = `https://${host_name}/app/gfe-app-page-yzs-love-lab/customer-sign-index.html?yzsUserId=${this.customerId}&type=${type}&businessLineType=${this.businessLineType}`
-            if (isInApp) {
-                KNB.openWebview({
-                    url: url
-                })
-            } else {
-                location.href = `./customer-sign-index.html?yzsUserId=${this.customerId}&type=${type}&businessLineType=${this.businessLineType}`
-            }
+            location.href = `./customer-sign-index.html?yzsUserId=${this.customerId}&type=${type}&businessLineType=${this.businessLineType}`
         },
         jumpEditHistroy(event, type) {
             event.stopPropagation()
-            // let url = `https://${host_name}/app/gfe-app-page-yzs-love-lab/customer-add-history-index.html?addType=${type}&yzsUserId=${this.customerId}&businessLineType=${this.businessLineType}`
-            // if (isInApp) {
-            //     KNB.openWebview({
-            //         url: url
-            //     })
-            // } else {
-                location.href = `./customer-add-history-index.html?addType=${type}&yzsUserId=${this.customerId}&businessLineType=${this.businessLineType}`
-            // }
+            
+            location.href = `./customer-add-history-index.html?addType=${type}&yzsUserId=${this.customerId}&businessLineType=${this.businessLineType}`
         },
         cancelQianyue(){
             this.isShowQianyue = false

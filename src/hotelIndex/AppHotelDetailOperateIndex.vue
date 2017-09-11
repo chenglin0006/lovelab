@@ -136,7 +136,6 @@ import qs from 'qs';
 import fetchJsonp from 'fetch-jsonp';
 import mockData from './js/mock.js';
 import CommonFun from '../commonJs/CommonFun.js';
-import KNB from '@dp/knb';
 var mDomain = CommonFun.getDomain();
 var eDomain = CommonFun.getEDomain();
 export default {
@@ -168,18 +167,7 @@ export default {
     mounted(){
         this.shopId = Util.getUrlParam('shopId')?Util.getUrlParam('shopId'):0;
         this.isLLApp = CommonFun.getUaIsApp();
-        KNB.ready(()=>{
-            KNB.getUA({
-                success: (info)=>{
-                    this.isIOS = info&&info.osName=='ios'?true:false;
-                    this.isAndroid = info&&info.osName=='android'?true:false;
-                    this.getOperateData();
-                },
-                fail: (err)=>{
-                    this.getOperateData();
-                }
-            });
-        });
+        this.getOperateData();
     },
     methods:{
         getOperateData:function(){

@@ -211,7 +211,6 @@
     }
 </style>
 <script>
-    import KNB from '@dp/knb';
     import Toast from '@dp/wepp-module-toast';
     import {swiper,swiperSlide} from 'vue-awesome-swiper';
     import $ from '@dp/zepto';
@@ -291,40 +290,6 @@
           Toast('最多只能上传5张图片');
           return;
         }
-        let self = this;
-        KNB.chooseImage({
-          type: 'gallery', //图片类型：'gallery'相册, 'camera'相机, ''呼出相机和相册组合
-          count: 5-this.statusImgList.length, //可选,表示可以选择图片的最大数量,当type:camera时此参数无效。default: 9
-          success: function(result){
-//            alert(JSON.stringify(result));
-            let photos = result.photoInfos; // photoInfos是一个对象数组，每个对象包括以下内容
-            let localArr = [];
-            photos.forEach(function(photo){
-              localArr.push(photo.localId); //返回本地资源id
-            });
-            Toast('上传图片中');
-            let uploadConfig = {
-              bucket: 'wedding', //dp,mt下均需要有bucket.（mt 8.3以下不需要指定bucktet默认使用shaitu）
-              signatureURL: 'https:'+CONSTANT.ajaxAddress.mDomain+'/wed/file/upload/getToken?bucket=wedding',
-              localIds: localArr, //待上传图片的本地资源位置id
-              success: function(data){
-                let photos = data.photoInfos;
-//                alert(JSON.stringify(photos));
-                photos.forEach(function(photo){
-                  let pic = photo.picUrl.split(':');
-                  pic.shift();
-                  let picUrl = pic[0]; //上传后的的图片URI或者云图片资源Id,去掉了协议头
-                  let obj ={
-                    status:0, //表示新增的
-                    imgUrl:picUrl
-                  };
-                  self.statusImgList.push(obj);
-                });
-              },
-            };
-            KNB.uploadImage(uploadConfig);
-          }
-        });
       },
       deleteImgFun:function (index) {
         this.statusImgList.forEach((ele,eleIndex)=>{

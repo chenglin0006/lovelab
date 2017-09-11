@@ -16,7 +16,6 @@ import Toast from '@dp/wepp-module-toast';
 import Util from '@dp/vc-util';
 import $ from '@dp/zepto';
 import qs from 'qs';
-import KNB from '@dp/knb';
 import mockData from './js/mock.js';
 import fetchJsonp from 'fetch-jsonp';
 import CommonFun from '../commonJs/CommonFun.js'

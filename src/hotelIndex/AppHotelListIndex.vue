@@ -51,7 +51,6 @@ import $ from '@dp/zepto';
 import qs from 'qs';
 import fetchJsonp from 'fetch-jsonp';
 import CommonFun from '../commonJs/CommonFun.js';
-import KNB from '@dp/knb';
 import UA from '@dp/util-m-ua';
 import AppBottomTab from '../commonApp/AppBottomTab.vue';
 var mDomain = CommonFun.getDomain();
@@ -133,40 +132,11 @@ export default {
     },
     mounted(){
         this.isLLApp = CommonFun.getUaIsApp();
-        KNB.ready(()=>{
-            KNB.setNavigationBarHidden({
-              flag: 1, //0表示显示，1表示隐藏
-              success: function(){},
-              fail: function(){}
-            });
-            KNB.setLLButton({
-              disable: 1,
-              success: function(){
-                 console.log('reset LLButon success');
-              },
-              fail: function(){
-                 console.log('not supported yet!');
-              }
-            });
-            KNB.getUA({
-                success: (info)=>{
-                    this.isIOS = info&&info.osName=='ios'?true:false;
-                    this.isAndroid = info&&info.osName=='android'?true:false;
-                    this.getRegionList();
-                    this.filterSelectList = this.regionSelectList;
-                    this.searchFun();
-                    this.pageIndex++;
-                    $('.hotel-list-div').on('scroll', this.scrollMore);
-                },
-                fail: (err)=>{
-                    this.getRegionList();
-                    this.filterSelectList = this.regionSelectList;
-                    this.searchFun();
-                    this.pageIndex++;
-                    $('.hotel-list-div').on('scroll', this.scrollMore);
-                }
-            });
-        });
+        this.getRegionList();
+        this.filterSelectList = this.regionSelectList;
+        this.searchFun();
+        this.pageIndex++;
+        $('.hotel-list-div').on('scroll', this.scrollMore);
     },
     methods:{
         inputSearchFun:function(){

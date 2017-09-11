@@ -157,7 +157,6 @@ import mockData from './js/mock.js';
 import fetchJsonp from 'fetch-jsonp';
 import formatter from 'date-formatter';
 import CommonFun from '../commonJs/CommonFun.js';
-import KNB from '@dp/knb';
 var mDomain = CommonFun.getDomain();
 var eDomain = CommonFun.getEDomain();
 export default {
@@ -210,41 +209,17 @@ export default {
     mounted(){
         this.shopId = this.$route.query.shopId;
         this.isLLApp = CommonFun.getUaIsApp();
-        KNB.ready(()=>{
-            KNB.getUA({
-                success: (info)=>{
-                    this.isIOS = info&&info.osName=='ios'?true:false;
-                    this.isAndroid = info&&info.osName=='android'?true:false;
-                    this.getHotDaysList();
-                    this.getBasicBriefInfo();
-                    this.getDiscountData();
-                    this.getHallData();
-                    this.getMenuData();
-                    this.getCooperateData();
-                    this.getFacilityData();
-                },
-                fail: (err)=>{
-                    this.getHotDaysList();
-                    this.getBasicBriefInfo();
-                    this.getDiscountData();
-                    this.getHallData();
-                    this.getMenuData();
-                    this.getCooperateData();
-                    this.getFacilityData();
-                }
-            });
-        });
+        this.getHotDaysList();
+        this.getBasicBriefInfo();
+        this.getDiscountData();
+        this.getHallData();
+        this.getMenuData();
+        this.getCooperateData();
+        this.getFacilityData();
     },
     methods:{
         showCalendarFun:function(){
             this.showCalendarStatus = true;
-            KNB.ready(()=>{
-                KNB.setNavigationBarHidden({
-                  flag: 1, //0表示显示，1表示隐藏
-                  success: function(){},
-                  fail: function(){}
-                });
-            });
         },
         hideCalendarFun:function(checkInDate,checkOutDate){
             this.showCalendarStatus = false;
@@ -253,13 +228,6 @@ export default {
                 this.scheduleTo = checkOutDate;
                 this.getHallData();
             }
-            KNB.ready(()=>{
-                KNB.setNavigationBarHidden({
-                  flag: 0, //0表示显示，1表示隐藏
-                  success: function(){},
-                  fail: function(){}
-                });
-            });
         },
         callShopFun:function(){
             window.location.href = 'tel:'+this.hotelBasicBriefInfoData.phoneNumber;

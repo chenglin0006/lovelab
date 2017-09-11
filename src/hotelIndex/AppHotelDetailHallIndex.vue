@@ -99,7 +99,6 @@ import qs from 'qs';
 import mockData from './js/mock.js';
 import fetchJsonp from 'fetch-jsonp';
 import CommonFun from '../commonJs/CommonFun.js';
-import KNB from '@dp/knb';
 var mDomain = CommonFun.getDomain();
 var eDomain = CommonFun.getEDomain();
 export default {
@@ -143,50 +142,17 @@ export default {
         this.hallId = this.$route.query.hallId;
         this.shopId = this.$route.query.shopId;
         this.isLLApp = CommonFun.getUaIsApp();
-        KNB.ready(()=>{
-            KNB.getUA({
-                success: (info)=>{
-                    this.isIOS = info&&info.osName=='ios'?true:false;
-                    this.isAndroid = info&&info.osName=='android'?true:false;
-                    this.getHallDetailData();
-
-                },
-                fail: (err)=>{
-                    this.getHallDetailData();
-                }
-            });
-        });
+        this.getHallDetailData();
     },
     methods:{
         showImgPreivewFun:function(index){
             if(this.imgList.length){
-                if(this.isLLApp){
-                    KNB.setNavigationBarHidden({
-                      flag: 1, //0表示显示，1表示隐藏
-                      success: ()=>{
-                        this.showImgPreivewStatus = true;
-                        this.$refs.mySwiper.swiper.slideTo(index);
-                      },
-                      fail: ()=>{}
-                    });
-                } else {
-                    this.showImgPreivewStatus = true;
-                    this.$refs.mySwiper.swiper.slideTo(index);
-                }
+                this.showImgPreivewStatus = true;
+                this.$refs.mySwiper.swiper.slideTo(index);
             }
         },
         hideImgPreivewFun:function(){
-            if(this.isLLApp){
-                KNB.setNavigationBarHidden({
-                  flag: 0, //0表示显示，1表示隐藏
-                  success: ()=>{
-                    this.showImgPreivewStatus = false;
-                  },
-                  fail: ()=>{}
-                });
-            } else {
-                this.showImgPreivewStatus = false;
-            }
+            this.showImgPreivewStatus = false;
         },
         toMenuDetail:function(item){
             location.href = './hotel-detail-menu-detail.html?menuId='+item.menuId;

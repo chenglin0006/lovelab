@@ -198,7 +198,6 @@
     }
 </style>
 <script>
-    import KNB from '@dp/knb';
     import Toast from '@dp/wepp-module-toast';
     import CONSTANT from './js/constant.js';
     import AppBottomTab from '../commonApp/AppBottomTab.vue';
@@ -218,35 +217,15 @@
           AppBottomTab,
         },
       mounted(){
-        //隐藏back按钮
-        KNB.setLLButton({
-          disable: 1,
-          success: function(){
-          },
-          fail: function(){
-          }
-        });
       },
       methods:{
           toDoneOrders:function () {
-            if(isAPP){
-              KNB.openWebview({
-                url: CONSTANT.gAddress+'/app/gfe-app-page-yzs-love-lab/order-list.html', //需要打开的完整http链接,
-              });
-            }else{
-              location.href = './order-list.html';
-            }
+            location.href = './order-list.html';
 
 
           },
         toPersonalGoal:function () {
-            if(isAPP){
-              KNB.openWebview({
-                url: CONSTANT.gAddress+'/app/gfe-app-page-yzs-love-lab/my-goal-page.html', //需要打开的完整http链接,
-              })
-            }else{
-              location.href = './my-goal-page.html';
-            }
+            location.href = './my-goal-page.html';
         },
         toLogout:function () {
           let eDomain = CONSTANT.ajaxAddress.eDomain;
@@ -257,16 +236,7 @@
             .end(function (err,res) {
               let data = res.body;
               if(data.code==200){
-                if(isAndroid && isAPP){
-                  //安卓退出是另外的逻辑
-                  KNB.logout({
-                    success: function(){
-                      Toast('退出成功');
-                    }
-                  });
-                }else{
-                  location.href = 'https:'+eDomain+'/slogin?redir=https:'+CONSTANT.gAddress+'/app/gfe-app-page-yzs-love-lab/customer-list.html'
-                }
+                location.href = 'https:'+eDomain+'/slogin?redir=https:'+CONSTANT.gAddress+'/app/gfe-app-page-yzs-love-lab/customer-list.html'
               }else{
                 Toast(data.msg.message);
               }

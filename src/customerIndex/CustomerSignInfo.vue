@@ -15,7 +15,6 @@ import Toast from '@dp/wepp-module-toast'
 import MyHeader from './components/Header.vue'
 import ContractItem from './components/ContractItem.vue'
 import CommonFun from '../commonJs/CommonFun.js'
-import KNB from '@dp/knb'
 let mDomain = CommonFun.getDomain()
 let isInApp = CommonFun.getUaIsApp()
 let host_name = location.hostname.indexOf('dianping') > -1 ? 'g.dianping.com' : 'g.51ping.com'
@@ -46,13 +45,7 @@ export default {
     methods: {
         showOrder(item){
             let url = `https://${host_name}/app/gfe-app-page-yzs-love-lab/order-detail.html?orderId=${item.id}`
-            if (isInApp) {
-                KNB.openWebview({
-                    url: url
-                })
-            } else {
-                location.href = `./order-detail.html?orderId=${item.transAmount}`
-            }
+            location.href = `./order-detail.html?orderId=${item.transAmount}`
         }
     },
     watch: {

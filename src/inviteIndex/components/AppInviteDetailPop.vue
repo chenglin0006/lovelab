@@ -211,23 +211,11 @@
                     businessLineType=1;
                 }
                 let urlLink = 'https:'+gDomain+'/app/gfe-app-page-yzs-love-lab/customer-business-detail.html?yzsUserId='+this.item.yzsUserId+'&businessLineType='+businessLineType;
-                if(this.isLLApp){
-                    KNB.openWebview({
-                      url: urlLink
-                    });
-                } else {
-                    location.href= urlLink;
-                }
+                location.href= urlLink;
             },
             toOrderDetailIndex:function(){
                 let urlLink = 'https:'+gDomain+'/app/gfe-app-page-yzs-love-lab/order-suborder-detail.html?subOrderId='+this.item.eventInfo.subOrderId;
-                if(this.isLLApp){
-                    KNB.openWebview({
-                      url: urlLink
-                    });
-                } else {
-                    location.href= urlLink;
-                }
+                location.href= urlLink;
             },
             emitRefreshInviteAndSummaryNum:function(){
                 this.$emit('refreshInviteNum');

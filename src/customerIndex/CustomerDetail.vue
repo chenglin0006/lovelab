@@ -86,7 +86,6 @@ import fetchJsonp from 'fetch-jsonp';
 import Toast from '@dp/wepp-module-toast';
 import CommonFun from '../commonJs/CommonFun.js'
 import formatter from 'date-formatter'
-import KNB from '@dp/knb'
 let mDomain = CommonFun.getDomain()
 let isInApp = CommonFun.getUaIsApp()
 let host_name = location.hostname.indexOf('dianping') > -1 ? 'g.dianping.com' : 'g.51ping.com'
@@ -129,13 +128,7 @@ export default {
         },
         showCustomerMore(item){
             let url = `https://${host_name}/app/gfe-app-page-yzs-love-lab/customer-business-detail.html?businessLineType=${item.businessLineType}&yzsUserId=${this.customerId}`
-            if (isInApp) {
-                KNB.openWebview({
-                    url: url
-                })
-            } else {
-                location.href = `./customer-business-detail.html?businessLineType=${item.businessLineType}&yzsUserId=${this.customerId}`
-            }
+            location.href = `./customer-business-detail.html?businessLineType=${item.businessLineType}&yzsUserId=${this.customerId}`
         },
         setAssignSales(event, item){
             event.stopPropagation()
@@ -218,15 +211,7 @@ export default {
             }
         },
         showEditCustomer() {
-            // let url = `https://${host_name}/app/gfe-app-page-yzs-love-lab/customer-edit.html?yzsUserId=${this.customerId}`
-            // if (isInApp) {
-            //     KNB.openWebview({
-            //         url: url
-            //     })
-            // } else {
-                location.href = './customer-edit.html?yzsUserId=' + this.customerId
-            // }
-            
+            location.href = './customer-edit.html?yzsUserId=' + this.customerId
         }
     },
     computed: {
