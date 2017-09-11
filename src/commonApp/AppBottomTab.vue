@@ -6,7 +6,7 @@
         <div class="tab-title flex-child calendar" :class="{'active':activeTab=='invite'}" @click="toIndex(calendarLink,'invite')">
             <div class="number-div" v-if="notDealNumber"><span>{{notDealNumber}}</span></div>
             <div class="img-div"></div>
-            <a>日程{{activeTab}}</a>
+            <a>日程</a>
         </div>
         <div class="tab-title flex-child hotel" :class="{'active':activeTab=='hotel'}" @click="toIndex(hotelLink,'hotel')">
             <div class="img-div"></div>
