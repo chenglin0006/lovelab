@@ -31,7 +31,7 @@
 import Toast from '@dp/wepp-module-toast';
 import Util from '@dp/vc-util';
 import $ from '@dp/zepto';
-// import { swiper, swiperSlide } from 'vue-awesome-swiper';
+import { swiper, swiperSlide } from 'vue-awesome-swiper';
 import qs from 'qs';
 import mockData from './js/mock.js';
 import fetchJsonp from 'fetch-jsonp';
@@ -60,8 +60,8 @@ export default {
     },
     props:[],
     components: {
-        // swiper,
-        // swiperSlide
+        swiper,
+        swiperSlide
     },
     watch:{
     },

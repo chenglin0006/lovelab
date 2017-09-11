@@ -116,70 +116,32 @@ module.exports = {
     },
     module: {
         rules: [
-            vueloadRule,
             {
-                test: /\.(es6|js)$/,
-                use: [{
-                    loader: 'babel-loader',
-                    options: {
-                        cacheDirectory: env == "dev"
+                test: /\.vue$/,
+                loader: 'vue-loader',
+                options: {
+                  loaders: {
+                        'css': "vue-style-loader!css-loader!postcss-loader",
+                        'less': "vue-style-loader!css-loader!postcss-loader!less-loader"
                     }
-                }],
-                exclude: /node_modules\/(?!@(gfe|dp))/
-            }, {
-                test: /\.css$/,
-                use: ExtractTextPlugin.extract(cssOption)
-            }, {
-                test: /\.woff|ttf|woff2|eot$/,
-                use: [{
-                    loader: 'url-loader',
-                    options: {
-                        limit: 100000
-                    }
-                }]
-            }, {
-                test: /\.less$/,
-                use: ExtractTextPlugin.extract(lessOption)
-            }, {
-                test: /\.(jpe?g|png|gif|svg)$/i,
-                use: [{
-                    loader: 'url-loader',
-                    options: {
-                        limit: 25000
-                    }
-                }]
-            },
-            {
-                test: /\.(scss|css)$/,
-                include: [
-                  path.resolve(__dirname, './src/styles'),
-                ],
-                use: ExtractTextPlugin.extract({
-                  fallback: 'style-loader',
-                  loader: [
-                    {
-                      loader: 'css-loader',
-                      options: {
-                        modules: true,
-                        importLoaders: 3,
-                        sourceMap: true,
-                      },
-                    }, {
-                      loader: 'postcss-loader',
-                      options: {
-                        browsers: 'last 2 version',
-                        sourceMap: true,
-                      },
-                    }, {
-                      loader: 'sass-loader',
-                      options: {
-                        // outputStyle: 'expanded',
-                        sourceMap: true,
-                        // sourceMapContents: true,
-                      },
-                    },
-                  ],
-                }),
+                  // other vue-loader options go here
+                }
+              },
+              {
+                test: /\.(less|css)$/,
+                use:[ 'style-loader','css-loader','less-loader'],
+              },
+              {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                exclude: /node_modules/
+              },
+              {
+                test: /\.(png|jpg|gif|svg)$/,
+                loader: 'file-loader',
+                options: {
+                  name: '[name].[ext]?[hash]'
+                }
               }
         ]
     },
