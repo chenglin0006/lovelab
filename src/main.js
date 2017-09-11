@@ -12,6 +12,9 @@ router.afterEach(route=>{
 		document.title = route.meta.title;
 		store.dispatch('setBottomStatus',route.meta.showBottom);
 	}
+	if(route.meta.tab){
+		store.dispatch('setActiveTab',route.meta.tab);
+	}
 })
 
 new Vue({

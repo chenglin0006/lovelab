@@ -233,23 +233,23 @@ export default {
             window.location.href = 'tel:'+this.hotelBasicBriefInfoData.phoneNumber;
         },
         toHotelDiscountIndex:function(){
-            this.$router.push({path:'/hotel/hotelDetail/discount',query:{shopId:this.shopId}})
+            this.$router.push({path:'/hotelDetail/discount',query:{shopId:this.shopId}})
         },
         toHotelRecommandIndex:function(){
-            this.$router.push({path:'/hotel/hotelDetail/recommand',query:{shopId:this.shopId}})
+            this.$router.push({path:'/hotelDetail/recommand',query:{shopId:this.shopId}})
         },
         toHotelFeeIndex:function(){
-            this.$router.push({path:'/hotel/hotelDetail/fee',query:{shopId:this.shopId}})
+            this.$router.push({path:'/hotelDetail/fee',query:{shopId:this.shopId}})
         },
         toHotelCooperateIndex:function(){
-            this.$router.push({path:'/hotel/hotelDetail/cooperate',query:{shopId:this.shopId}})
+            this.$router.push({path:'/hotelDetail/cooperate',query:{shopId:this.shopId}})
         },
         toHotelOperateIndex:function(){
-            this.$router.push({path:'/hotel/hotelDetail/operate',query:{shopId:this.shopId}})
+            this.$router.push({path:'/hotelDetail/operate',query:{shopId:this.shopId}})
         },
         toPicIndex:function(){
             if(this.hotelBasicBriefInfoData.picCount>0){
-                this.$router.push({path:'/hotel/hotelDetail/pic',query:{shopId:this.shopId}})
+                this.$router.push({path:'/hotelDetail/pic',query:{shopId:this.shopId}})
             }
         },
         showValidScheduleFun:function(hallItem){

@@ -52,7 +52,7 @@ export default {
     },
     methods:{
         toHotelDetaiFun:function(){
-            this.$router.push({path:'/hotel/hotelDetail',query:{shopId:this.item.shopId}});
+            this.$router.push({path:'/hotelDetail',query:{shopId:this.item.shopId}});
         }
     }
 }

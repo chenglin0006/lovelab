@@ -237,7 +237,12 @@
             AppBottomTab
         },
         props:[],
-
+        beforeRouteEnter (to, from, next) {
+          next(vm => {
+            debugger
+            console.log(to,'1111===');
+          })
+        },
         computed: {
             selectHotelStr:function(){
                 let arry = [];

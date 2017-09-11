@@ -13,4 +13,5 @@ export const NX_TOKEN = 'NX_TOKEN'	//大象鉴权token
 export const NOT_DEAL_INVITE_NUM = 'NOT_DEAL_INVITE_NUM'	//待处理的邀约事件数量
 
 export const SHOW_BOTTOM_STATUS = 'SHOW_BOTTOM_STATUS'
+export const ACTIVE_TAB = 'ACTIVE_TAB'
 

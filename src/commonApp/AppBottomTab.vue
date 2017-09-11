@@ -3,16 +3,16 @@
 -->
 <template>
 	<section class="love-lab-bottom-tab-div flex-parent" :class="{'is-android':isAndroid}">
-        <div class="tab-title flex-child calendar" :class="{'active':activeText.text=='invite'}" @click="toIndex(calendarLink,'invite')">
+        <div class="tab-title flex-child calendar" :class="{'active':activeTab=='invite'}" @click="toIndex(calendarLink,'invite')">
             <div class="number-div" v-if="notDealNumber"><span>{{notDealNumber}}</span></div>
             <div class="img-div"></div>
-            <a>日程</a>
+            <a>日程{{activeTab}}</a>
         </div>
-        <div class="tab-title flex-child hotel" :class="{'active':activeText.text=='hotel'}" @click="toIndex(hotelLink,'hotel')">
+        <div class="tab-title flex-child hotel" :class="{'active':activeTab=='hotel'}" @click="toIndex(hotelLink,'hotel')">
             <div class="img-div"></div>
             <a>资料库</a>
         </div>
-        <div class="tab-title flex-child own" :class="{'active':activeText.text=='own'}" @click="toIndex(ownLink,'own')">
+        <div class="tab-title flex-child own" :class="{'active':activeTab=='own'}" @click="toIndex(ownLink,'own')">
             <div class="img-div"></div>
             <a>我的</a>
         </div>
@@ -26,6 +26,7 @@
     import Toast from '@dp/wepp-module-toast';
     import fetchJsonp from 'fetch-jsonp';
     import UA from '@dp/util-m-ua';
+    import { mapGetters } from 'vuex';
     var mDomain = CommonFun.getDomain();
     var gDomain = CommonFun.getGDomain();
     var eDomain = CommonFun.getEDomain();
@@ -39,10 +40,7 @@
                 notDealNumber:0,
                 isIOS:false,
                 isAndroid:false,
-                isLLApp:false,
-                activeText:{
-                    text:''
-                }
+                isLLApp:false
             }
         },
         watch:{
@@ -50,14 +48,13 @@
                 this.notDealNumber = this.notDealNum;
             }
         },
-        beforeRouteEnter (to, from, next) {
-            // 在渲染该组件的对应路由被 confirm 前调用
-            // 不！能！获取组件实例 `this`
-            // 因为当钩子执行前，组件实例还没被创建
+        computed:{
+            ...mapGetters({
+                activeTab:'getActiveTab'
+            })
         },
         props:['notDealNum'],
         mounted() {
-            this.activeText.text=this.$route.meta.tab?this.$route.meta.tab:'hotel';
             this.isLLApp = CommonFun.getUaIsApp();
             this.customerLink = '/customer';
             this.calendarLink = '/invite';
@@ -90,8 +87,8 @@
                 });
             },
             toIndex:function(link,text){
-                if(this.activeText.text!=text&&link){
-                    this.activeText.text=text;
+                if(this.activeTab!=text&&link){
+                    this.$store.dispatch('setActiveTab',this.activeTab);
                     this.$router.push({path:link,query:{}});
                 }
             }

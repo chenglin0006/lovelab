@@ -6,6 +6,7 @@ Vue.use(Vuex)
 
 const state={
 	showBottomStatus:true,
+	activeTab:'',
 	isBoss:false,
 	currentMis:{},	//当前登陆者的信息
 	nxKey:'',
@@ -24,6 +25,9 @@ const state={
 const mutations={
 	[type.IS_BOSS](state,boolFlag){
 		state.isBoss = boolFlag;
+	},
+	[type.ACTIVE_TAB](state,text){
+		state.activeTab = text;
 	},
 	[type.SHOW_BOTTOM_STATUS](state,boolFlag){
 		state.showBottomStatus = boolFlag;
@@ -69,6 +73,9 @@ const mutations={
 const actions= {
 	 setBottomStatus({commit},boolFlag){
 	 	commit(type.SHOW_BOTTOM_STATUS,boolFlag);
+	 },
+	 setActiveTab({commit},text){
+		commit(type.ACTIVE_TAB,text);
 	 },
 	 setIsBoss({commit},boolFlag){
 	 	commit(type.IS_BOSS,boolFlag);
@@ -126,7 +133,8 @@ const getters = {
     getReportHotelList:state=>state.reportHotelList,
     getChoosedReportHotel:state=>state.choosedReportHotel,
     getChoosedInviteHotel:state=>state.choosedInviteHotel,
-    getNotDealInviteNum:state=>state.notDealInviteNum
+    getNotDealInviteNum:state=>state.notDealInviteNum,
+    getActiveTab:state=>state.activeTab
 }
 
 
