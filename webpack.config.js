@@ -100,7 +100,7 @@ if (env == "dev") {
 }
 module.exports = {
     entry: {
-        'index': ['./src/main.js'],
+        'build': ['./src/main.js'],
     },
     output: {
         filename: '[name].js',

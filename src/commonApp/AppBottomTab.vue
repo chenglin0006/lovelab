@@ -3,6 +3,10 @@
 -->
 <template>
 	<section class="love-lab-bottom-tab-div flex-parent" :class="{'is-android':isAndroid}" v-show="showBottom">
+        <div class="tab-title flex-child customer" :class="{'active':activeTab=='customer'}" @click="toIndex(customerLink,'customer')">
+            <div class="img-div"></div>
+            <a>客户</a>
+        </div>
         <div class="tab-title flex-child calendar" :class="{'active':activeTab=='invite'}" @click="toIndex(calendarLink,'invite')">
             <div class="number-div" v-if="notDealNumber"><span>{{notDealNumber}}</span></div>
             <div class="img-div"></div>

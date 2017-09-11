@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import AppHotelListIndex from '../hotelIndex/AppHotelListIndex.vue';
 import AppHotelDetail from '../hotelIndex/AppHotelDetail.vue';
 import AppHotelDetailIndex from '../hotelIndex/AppHotelDetailIndex.vue';
 import AppHotelDetailDiscountIndex from '../hotelIndex/AppHotelDetailDiscountIndex.vue'
@@ -21,16 +20,18 @@ import AppHotelDetailPicIndex from '../hotelIndex/AppHotelDetailPicIndex.vue'
 
 
 const Invite = () => import('../inviteIndex/AppInviteDetailIndex.vue')
-const Hotel = () => import('../hotelIndex/AppHotelListIndex.vue')
+const Hotel = () => import('../hotelIndex/AppHotel.vue')
 const HotelDetail = () => import('../hotelIndex/AppHotelDetail.vue')
 const Own = () => import('../orderIndex/AppMyIndex.vue')
+const Customer = () => import('../customerIndex/AppTest.vue')
 
 Vue.use(Router);
 
 export default new Router({
   routes: [
-    {path: '/',name: 'hotel',component: Hotel,meta:{title:"酒店列表",showBottom:true,tab:'hotel'}},
+    {path: '/',name: 'own',component: Own,meta:{title:"我的",showBottom:true,tab:'own'}},
     {path: '/invite',name: 'invite',component: Invite,meta:{title:"邀约详情",showBottom:true,tab:'invite'}},
+    {path: '/customer',name: 'customer',component: Customer,meta:{title:"客户详情",showBottom:true,tab:'customer'}},
     {path: '/hotel',name: 'hotel',component: Hotel,meta:{title:"酒店列表",showBottom:true,tab:'hotel'}},
     {path: '/own',name: 'own',component: Own,meta:{title:"我的",showBottom:true,tab:'own'}},
     {path: '/hotelDetail',name: 'hotelDetail',component: HotelDetail,meta:{title:"酒店详情",showBottom:false},
