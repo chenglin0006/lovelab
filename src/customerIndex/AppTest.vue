@@ -48,7 +48,7 @@ export default {
                 recommand: obj
             }).then(
                 respone => {
-                   this.getUserListFun();
+                   this.getRecommandListFun();
                 },
                 respone => {
 
