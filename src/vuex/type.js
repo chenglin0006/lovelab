@@ -14,4 +14,5 @@ export const NOT_DEAL_INVITE_NUM = 'NOT_DEAL_INVITE_NUM'	//待处理的邀约事
 
 export const SHOW_BOTTOM_STATUS = 'SHOW_BOTTOM_STATUS'
 export const ACTIVE_TAB = 'ACTIVE_TAB'
+export const USER_LIST = 'USER_LIST'
 

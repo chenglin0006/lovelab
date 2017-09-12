@@ -6,6 +6,7 @@ Vue.use(Vuex)
 
 const state={
 	showBottomStatus:true,
+	userList:[],
 	activeTab:'',
 	isBoss:false,
 	currentMis:{},	//当前登陆者的信息
@@ -28,6 +29,9 @@ const mutations={
 	},
 	[type.ACTIVE_TAB](state,text){
 		state.activeTab = text;
+	},
+	[type.USER_LIST](state,list){
+		state.userList = list;
 	},
 	[type.SHOW_BOTTOM_STATUS](state,boolFlag){
 		state.showBottomStatus = boolFlag;
@@ -73,6 +77,9 @@ const mutations={
 const actions= {
 	 setBottomStatus({commit},boolFlag){
 	 	commit(type.SHOW_BOTTOM_STATUS,boolFlag);
+	 },
+	 setUserList({commit},list){
+	 	commit(type.USER_LIST,list);
 	 },
 	 setActiveTab({commit},text){
 		commit(type.ACTIVE_TAB,text);
@@ -121,6 +128,7 @@ const actions= {
 
 const getters = {
 	getShowBottomStatus:state=>state.showBottomStatus,
+	getUserList:state=>state.userList,
 	getIsBoss:state=>state.isBoss,
 	getCurrentMis:state=>state.currentMis,
 	getNxKey:state=>state.nxKey,
